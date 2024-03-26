@@ -1,5 +1,6 @@
 package com.aui;
 
+import com.aui.web.GPIHttpServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Wrapper;
@@ -10,7 +11,7 @@ public class MainApplication {
         Tomcat tomcat = new Tomcat();
         tomcat.getConnector();
 
-        Context context = tomcat.addContext("/customer-A", null);
+        Context context = tomcat.addContext("/customer-a", null);
         Wrapper servletWrapper = Tomcat.addServlet(context, "GPIServlet", new GPIHttpServlet());
         servletWrapper.setLoadOnStartup(1);
         servletWrapper.addMapping("/*");
