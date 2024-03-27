@@ -1,5 +1,6 @@
 package com.aui.web;
 
+import com.aui.context.ApplicationContext;
 import com.aui.model.Invoice;
 import com.aui.model.InvoiceCreationPostRequest;
 import com.aui.service.InvoiceService;
@@ -14,10 +15,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class GPIHttpServlet extends HttpServlet {
-    private final ObjectMapper objectMapper =
-            new ObjectMapper()
-                    .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    private final InvoiceService invoiceService = new InvoiceService();
+    private final ObjectMapper objectMapper = ApplicationContext.objectMapper;
+    private final InvoiceService invoiceService = ApplicationContext.invoiceService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
