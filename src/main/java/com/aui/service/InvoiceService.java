@@ -2,6 +2,8 @@ package com.aui.service;
 
 import com.aui.model.Invoice;
 import com.aui.model.InvoiceCreationPostRequest;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -32,5 +34,15 @@ public class InvoiceService {
 
     public List<Invoice> findAll(){
         return new ArrayList<>(invoices.values());
+    }
+
+    @PostConstruct
+    public void init(){
+        System.out.println("Establishing connection with CDN...");
+    }
+
+    @PreDestroy
+    public void shutdown(){
+        System.out.println("Gracefully terminating CDN connection...");
     }
 }

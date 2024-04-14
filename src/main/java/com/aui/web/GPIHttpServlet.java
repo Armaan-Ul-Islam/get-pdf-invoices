@@ -22,6 +22,7 @@ public class GPIHttpServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        ctx.registerShutdownHook();         //Required to trigger @PreDestroy on Force App Terminations
         objectMapper = ctx.getBean(ObjectMapper.class);
         invoiceService = ctx.getBean(InvoiceService.class);
         super.init();
