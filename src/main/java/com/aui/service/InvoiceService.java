@@ -4,6 +4,7 @@ import com.aui.model.Invoice;
 import com.aui.model.InvoiceCreationPostRequest;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class InvoiceService {
 
     private final UserService userService;
 
+    @Value("${cdn.url}")
+    private String cdnUrl;
+
     public InvoiceService(UserService userService) {
         this.userService = userService;
     }
@@ -25,7 +29,7 @@ public class InvoiceService {
         if (!userService.userExists(postRequest.getUserName())) {
             throw new IllegalStateException("User doesn't exist");
         }
-        return new Invoice(postRequest.getUserName(), postRequest.getAmount());
+        return new Invoice(postRequest.getUserName(), postRequest.getAmount(), cdnUrl);
     }
 
     public void storeInvoice(Invoice invoice){

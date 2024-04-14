@@ -17,11 +17,11 @@ public final class Invoice {
     @JsonProperty("pdf_url")
     private final String pdfUrl;
 
-    public Invoice(String userName, BigDecimal amount) {
+    public Invoice(String userName, BigDecimal amount, String cdnUrl) {
         this.id = UUID.randomUUID().toString();
         this.userName = userName;
         this.amount = amount;
-        this.pdfUrl = "https://cdn.aui.pdfs/invoice/" + id;
+        this.pdfUrl = cdnUrl + id;
     }
 
     public String getId() {
