@@ -12,7 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class InvoiceService {
 
-    @Autowired
     private UserService userService;
 
    /* public InvoiceService(UserService userService) {
@@ -34,5 +33,10 @@ public class InvoiceService {
 
     public List<Invoice> findAll(){
         return new ArrayList<>(invoices.values());
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }
