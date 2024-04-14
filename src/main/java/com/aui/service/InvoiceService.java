@@ -2,6 +2,7 @@ package com.aui.service;
 
 import com.aui.model.Invoice;
 import com.aui.model.InvoiceCreationPostRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,11 +11,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class InvoiceService {
-    private final UserService userService;
 
-    public InvoiceService(UserService userService) {
+    @Autowired
+    private UserService userService;
+
+   /* public InvoiceService(UserService userService) {
         this.userService = userService;
-    }
+    }*/
 
     private final ConcurrentHashMap<String, Invoice> invoices = new ConcurrentHashMap<>();
 
