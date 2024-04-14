@@ -62,7 +62,7 @@ public class GPIHttpServlet extends HttpServlet {
                 Invoice invoice = invoiceService.craftInvoiceFromRequest(postRequest);
                 invoiceService.storeInvoice(invoice);
 
-                System.out.println("Created invoice:" + invoice.toString());
+                System.out.println("Created invoice:" + invoice.getId());
                 response.setStatus(HttpServletResponse.SC_CREATED);
                 response.getWriter().println("Saved invoice successfully, generated id:" + invoice.getId());
             } catch (JsonProcessingException jsonProcessingException) {

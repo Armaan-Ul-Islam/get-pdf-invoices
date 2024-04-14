@@ -2,11 +2,13 @@ package com.aui.service;
 
 import com.aui.model.Invoice;
 import com.aui.model.InvoiceCreationPostRequest;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class InvoiceService {
     private final UserService userService;
 
