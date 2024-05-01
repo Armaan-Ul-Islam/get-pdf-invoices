@@ -1,22 +1,32 @@
 package com.aui.web;
 
-import com.aui.context.ApplicationContext;
+import com.aui.context.ApplicationConfig;
 import com.aui.model.Invoice;
 import com.aui.model.InvoiceCreationPostRequest;
 import com.aui.service.InvoiceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
 import java.util.List;
 
 public class GPIHttpServlet extends HttpServlet {
-    private final ObjectMapper objectMapper = ApplicationContext.objectMapper;
-    private final InvoiceService invoiceService = ApplicationContext.invoiceService;
+    private ObjectMapper objectMapper;
+    private InvoiceService invoiceService;
+
+    @Override
+    public void init() throws ServletException {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+        ctx.registerShutdownHook();         //Required to trigger @PreDestroy on Force App Terminations
+        objectMapper = ctx.getBean(ObjectMapper.class);
+        invoiceService = ctx.getBean(InvoiceService.class);
+        super.init();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -53,7 +63,7 @@ public class GPIHttpServlet extends HttpServlet {
                 Invoice invoice = invoiceService.craftInvoiceFromRequest(postRequest);
                 invoiceService.storeInvoice(invoice);
 
-                System.out.println("Created invoice:" + invoice.toString());
+                System.out.println("Created invoice:" + invoice.getId());
                 response.setStatus(HttpServletResponse.SC_CREATED);
                 response.getWriter().println("Saved invoice successfully, generated id:" + invoice.getId());
             } catch (JsonProcessingException jsonProcessingException) {
