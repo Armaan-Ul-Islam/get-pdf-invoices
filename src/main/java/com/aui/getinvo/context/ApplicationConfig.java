@@ -1,6 +1,6 @@
-package com.aui.context;
+package com.aui.getinvo.context;
 
-import com.aui.MainApplication;
+import com.aui.getinvo.MainApplication;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

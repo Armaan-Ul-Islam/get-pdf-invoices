@@ -1,4 +1,4 @@
-package com.aui.service;
+package com.aui.getinvo.service;
 
 import org.springframework.stereotype.Component;
 

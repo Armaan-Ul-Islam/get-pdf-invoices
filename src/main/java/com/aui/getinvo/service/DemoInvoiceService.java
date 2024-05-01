@@ -1,6 +1,6 @@
-package com.aui.service;
+package com.aui.getinvo.service;
 
-import com.aui.model.Invoice;
+import com.aui.getinvo.model.Invoice;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;

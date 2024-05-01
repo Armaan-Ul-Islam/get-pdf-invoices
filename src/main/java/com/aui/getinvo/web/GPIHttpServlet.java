@@ -1,9 +1,9 @@
-package com.aui.web;
+package com.aui.getinvo.web;
 
-import com.aui.context.ApplicationConfig;
-import com.aui.model.Invoice;
-import com.aui.model.InvoiceCreationPostRequest;
-import com.aui.service.InvoiceService;
+import com.aui.getinvo.context.ApplicationConfig;
+import com.aui.getinvo.model.Invoice;
+import com.aui.getinvo.model.InvoiceCreationPostRequest;
+import com.aui.getinvo.service.InvoiceService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;

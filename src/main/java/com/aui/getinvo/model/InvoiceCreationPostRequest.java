@@ -1,4 +1,4 @@
-package com.aui.model;
+package com.aui.getinvo.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,7 +1,7 @@
-package com.aui.service;
+package com.aui.getinvo.service;
 
-import com.aui.model.Invoice;
-import com.aui.model.InvoiceCreationPostRequest;
+import com.aui.getinvo.model.Invoice;
+import com.aui.getinvo.model.InvoiceCreationPostRequest;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Value;

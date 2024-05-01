@@ -1,6 +1,6 @@
-package com.aui;
+package com.aui.getinvo;
 
-import com.aui.web.GPIHttpServlet;
+import com.aui.getinvo.web.GPIHttpServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Wrapper;
