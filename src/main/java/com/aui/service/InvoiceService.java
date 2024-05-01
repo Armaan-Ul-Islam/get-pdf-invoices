@@ -16,12 +16,12 @@ public class InvoiceService {
 
     private final UserService userService;
 
-    @Value("${cdn.url}")
-    private String cdnUrl;
-
     public InvoiceService(UserService userService) {
         this.userService = userService;
     }
+
+    @Value("${cdn.url}")
+    private String cdnUrl;
 
     private final ConcurrentHashMap<String, Invoice> invoices = new ConcurrentHashMap<>();
 
@@ -34,6 +34,12 @@ public class InvoiceService {
 
     public void storeInvoice(Invoice invoice){
         invoices.put(invoice.getId(), invoice);
+    }
+
+    public void storeInvoices(List<Invoice> invoiceList) {
+        invoiceList.forEach( invoice ->
+            invoices.put(invoice.getId(), invoice)
+        );
     }
 
     public List<Invoice> findAll(){

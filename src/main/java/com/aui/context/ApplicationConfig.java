@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 @ComponentScan(basePackageClasses = MainApplication.class)
 @PropertySource("classpath:/application.properties")
+@PropertySource(value = "classpath:/application-${spring.profiles.active}.properties"
+        , ignoreResourceNotFound = true)
 public class ApplicationConfig {
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)     //default scope
